@@ -1,53 +1,52 @@
-
-
-
 //variáveis da bolinha
-let xbolinha = 300;   //posição horizontal da bolinha
-let ybolinha = 200;  //posição vertical da bolinha
-let diametro = 15;   //diametro da bolinha
-let raio = diametro / 2; //raio da bolinha
+let xBolinha = 300;
+let yBolinha = 200;
+let diametro = 15;
+let raio = diametro / 2;
 
 //velocidade da bolinha
-let velocidadeXbolinha = 6;  //velocidade horizontal da bolinha
-let velocidadeYbolinha = 6; //velocidade vertical da bolinha
+let velocidadeXBolinha = 6;
+let velocidadeYBolinha = 6;
 
+//variáveis da raquete
+let xRaquete = 5;
+let yRaquete = 150;
+let raqueteComprimento = 10;
+let raqueteAltura = 90;
 
-
-// Funções 
-
-
-
-function setup() { 
-  createCanvas(600, 400); //tamanho da tela
+function setup() {
+  createCanvas(600, 400);
 }
 
-
-function draw() {        //função de desenho
-  background(0);        //cor de fundo
-  mostrabolinha();     //chama a função que mostra a bolinha
-  movimentabolinha(); //chama a função que movimenta qbolinha
-  colisaoborda();    //chama a função que faz a bolinha bater na borda
+function draw() {
+    background(0);
+    mostraBolinha();
+    movimentaBolinha();
+    verificaColisaoBorda();
+    mostraRaquete();
 }
 
-
-function mostrabolinha(){ //função que mostra a bolinha
-  circle(xbolinha, ybolinha, diametro); //desenha a bolinha
+function mostraBolinha() {
+  circle(xBolinha, yBolinha, diametro);
 }
 
-
-function movimentabolinha(){ //função que movimenta a bolinha
-    xbolinha += velocidadeXbolinha;  //movimenta a bolinha na horizontal
-    ybolinha += velocidadeYbolinha; //movimenta a bolinha na vertical
+function movimentaBolinha() {
+  xBolinha += velocidadeXBolinha;
+  yBolinha += velocidadeYBolinha;
 }
 
-
-function colisaoborda(){ //função que faz a bolinha bater na borda
-    if (xbolinha + raio > width || xbolinha - raio < 0) { //se a bolinha chegar no limite da tela
-        velocidadeXbolinha *= -1;                        //inverte a velocidade horizontal
-      }
-      if (ybolinha + raio > height || ybolinha - raio < 0) { // se a bolinha chegar no limite da tela
-        velocidadeYbolinha *= -1;                           //inverte a velocidade vertical
-      }
+function verificaColisaoBorda() {
+  if (xBolinha + raio > width ||
+     xBolinha - raio < 0){
+    velocidadeXBolinha *= -1;
+  }
+  if (yBolinha + raio > height ||
+     yBolinha - raio < 0){
+    velocidadeYBolinha *= -1;
+  }
 }
 
-
+function mostraRaquete () {
+  rect(xRaquete, yRaquete, raqueteComprimento, 
+       raqueteAltura);
+}
